@@ -1,0 +1,26 @@
+<style lang="css" scoped>
+  .remark {    
+    background-color: #caeafc;
+    border-color: #99b4bd;
+    border-left: 5px solid #99b4bd;
+    padding: 0.5em;
+  }
+  .tip {    
+    background-color: #DDFFDD;
+    border-color: #99bd99;
+    border-left: 5px solid #99bd99;
+    padding: 0.5em;
+  }
+  .warn {
+    background-color: #fff3cd;
+    border-color: #cfbf8c;
+    border-left: 5px solid #cfbf8c;
+    padding: 0.5em;
+  }
+  .error {
+    background-color: #fcf2f2;
+    border-color: #dFb5b4;
+    border-left: 5px solid #dfb5b4;
+    padding: 0.5em;
+  }
+</style>
