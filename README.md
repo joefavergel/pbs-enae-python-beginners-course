@@ -1,4 +1,4 @@
-<img heigth="8" src="https://i.imgur.com/BhG5KQ3.png" alt="pbs-enae">
+<img heigth="8" src="https://i.imgur.com/826AqJI.png" alt="pbs-enae">
 
 <h1 align="center">Introducción a Python</h1>
 
