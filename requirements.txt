@@ -1,0 +1,24 @@
+# Entorno local equivalente a Google Colab para el curso "Introducción a Python" (PBS, oct-2026)
+numpy>=1.24
+pandas>=2.0,<3        # el material usa APIs eliminadas en pandas 3 (p. ej. freq="1H")
+matplotlib>=3.7
+seaborn>=0.13
+scipy>=1.10
+scikit-learn>=1.2
+statsmodels>=0.14
+plotly>=5.24        # px.scatter_map / px.density_map
+missingno>=0.5
+prettytable>=3.0
+feature-engine>=1.6
+pyarrow>=14
+fastparquet>=2023.10
+openpyxl>=3.1       # read_excel / to_excel
+yfinance>=0.2.40
+requests>=2.31
+pillow>=10
+packaging>=23
+jupyterlab>=4
+ipykernel>=6
+nbformat>=5.9
+nbclient>=0.10
+nbconvert>=7
