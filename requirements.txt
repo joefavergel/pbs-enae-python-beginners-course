@@ -1,6 +1,6 @@
 # Entorno local equivalente a Google Colab para el curso "Introducción a Python" (PBS, oct-2026)
 numpy>=1.24
-pandas>=2.0
+pandas>=2.0,<3        # el material usa APIs eliminadas en pandas 3 (p. ej. freq="1H")
 matplotlib>=3.7
 seaborn>=0.13
 scipy>=1.10
