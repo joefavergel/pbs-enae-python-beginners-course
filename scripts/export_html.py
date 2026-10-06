@@ -13,6 +13,7 @@ El notebook se ejecuta en memoria con el directorio de trabajo en la raíz del r
 (para reutilizar ``datasets/``); el ``.ipynb`` del repositorio no se modifica.
 """
 import argparse
+import html
 import re
 from pathlib import Path
 
@@ -24,6 +25,24 @@ from nbconvert import HTMLExporter
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CASES_DIR = REPO_ROOT / "casos"
 TITLE_RE = re.compile(r"^##\s+(.+)$", re.M)
+FULL_PAGE_RE = re.compile(r"<html[\s>]|<!doctype html", re.I)
+
+
+def isolate_html_documents(nb):
+    """Muestra en un iframe las salidas que son páginas HTML completas.
+
+    Así su CSS (p. ej. ``body{max-width:...}``) no altera el diseño del HTML exportado.
+    """
+    for cell in nb.cells:
+        for output in cell.get("outputs", []):
+            page = output.get("data", {}).get("text/html")
+            if isinstance(page, list):
+                page = "".join(page)
+            if page and FULL_PAGE_RE.search(page):
+                output["data"]["text/html"] = (
+                    f'<iframe srcdoc="{html.escape(page, quote=True)}" '
+                    'style="width:100%; height:320px; border:1px solid #ddd;"></iframe>'
+                )
 
 
 def case_notebook(source, metadata):
@@ -65,6 +84,7 @@ def main():
             resources={"metadata": {"path": str(REPO_ROOT)}},
         ).execute()
 
+    isolate_html_documents(nb)
     args.out.mkdir(parents=True, exist_ok=True)
     export(nb, args.out / f"{stem}.html", stem)
 
